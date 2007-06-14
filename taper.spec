@@ -5,9 +5,10 @@ Release:	%mkrel 0.pre1.5
 License:	GPL
 Group:		Archiving/Backup
 BuildRequires:	ncurses-devel
-Source:		http://switch.dl.sourceforge.net/sourceforge/taper/%{name}-%{version}pre1.tar.bz2
+Source0:	http://switch.dl.sourceforge.net/sourceforge/taper/%{name}-%{version}pre1.tar.bz2
 URL:		http://taper.sourceforge.net/
 Patch0:		taper-7.0pre1-sparc.patch
+Patch1:		taper-7.0pre1-remove-conflicting-type.patch
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -29,11 +30,12 @@ restoration program.
 %ifarch %{sunsparc}
 %patch0 -p1 -b .sparc
 %endif
+%patch1 -p1 -b .type_conflict
 
 find . -name CVS -type d | xargs rm -rf
 
 %build
-%make CFLAGS="$RPM_OPT_FLAGS -O3 -fno-strength-reduce -Wall"
+%make CFLAGS="%{optflags} -O3 -fno-strength-reduce -Wall"
 
 %install
 rm -rf %{buildroot}
