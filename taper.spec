@@ -26,7 +26,7 @@ restoration program.
 %prep
 %setup -q -n %{name}-%{version}pre-1
 
-%ifarch sparc sparv9 sparc64
+%ifarch %{sunsparc}
 %patch0 -p1 -b .sparc
 %endif
 
@@ -36,17 +36,17 @@ find . -name CVS -type d | xargs rm -rf
 %make CFLAGS="$RPM_OPT_FLAGS -O3 -fno-strength-reduce -Wall"
 
 %install
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{_sbindir} $RPM_BUILD_ROOT%{_bindir} $RPM_BUILD_ROOT%{_mandir}/man8
-%{makeinstall_std} 	BINDIR=$RPM_BUILD_ROOT%{_sbindir} \
-	ALTBIN=$RPM_BUILD_ROOT%{_bindir} \
-	MANDIR=$RPM_BUILD_ROOT%{_mandir}/man8
-ln -sf %{_sbindir}/taper $RPM_BUILD_ROOT%{_bindir}/taper
-ln -sf %{_sbindir}/bg_restore $RPM_BUILD_ROOT%{_bindir}/bg_restore
-ln -sf %{_sbindir}/bg_backup $RPM_BUILD_ROOT%{_bindir}/bg_backup
+rm -rf %{buildroot}
+mkdir -p %{buildroot}{%{_sbindir},%{_bindir},%{_mandir}/man8}
+%{makeinstall_std} 	BINDIR=%{buildroot}%{_sbindir} \
+	ALTBIN=%{buildroot}%{_bindir} \
+	MANDIR=%{buildroot}%{_mandir}/man8
+ln -sf %{_sbindir}/taper %{buildroot}%{_bindir}/taper
+ln -sf %{_sbindir}/bg_restore %{buildroot}%{_bindir}/bg_restore
+ln -sf %{_sbindir}/bg_backup %{buildroot}%{_bindir}/bg_backup
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
