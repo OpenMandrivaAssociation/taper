@@ -9,7 +9,6 @@ Source0:	http://switch.dl.sourceforge.net/sourceforge/taper/%{name}-%{version}pr
 URL:		http://taper.sourceforge.net/
 Patch0:		taper-7.0pre1-sparc.patch
 Patch1:		taper-7.0pre1-remove-conflicting-type.patch
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Taper is a backup and restoration program with a friendly user
