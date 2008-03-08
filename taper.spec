@@ -9,6 +9,7 @@ Source0:	http://switch.dl.sourceforge.net/sourceforge/taper/%{name}-%{version}pr
 URL:		http://taper.sourceforge.net/
 Patch0:		taper-7.0pre1-sparc.patch
 Patch1:		taper-7.0pre1-remove-conflicting-type.patch
+Patch2:		taper-7.0pre-1-umode_t.patch
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -31,6 +32,7 @@ restoration program.
 %patch0 -p1 -b .sparc
 %endif
 %patch1 -p1 -b .type_conflict
+%patch2 -p1 -b .umode_t
 
 find . -name CVS -type d | xargs rm -rf
 
