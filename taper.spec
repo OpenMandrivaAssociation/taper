@@ -1,7 +1,7 @@
 Summary:	A menu-driven file backup system
 Name:		taper
 Version:	7.0
-Release:	%mkrel 0.pre1.7
+Release:	%mkrel 0.pre1.8
 License:	GPL
 Group:		Archiving/Backup
 BuildRequires:	ncurses-devel
