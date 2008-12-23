@@ -1,7 +1,7 @@
 Summary:	A menu-driven file backup system
 Name:		taper
 Version:	7.0
-Release:	%mkrel 0.pre1.8
+Release:	%mkrel 0.pre1.9
 License:	GPL
 Group:		Archiving/Backup
 BuildRequires:	ncurses-devel
@@ -10,6 +10,7 @@ URL:		http://taper.sourceforge.net/
 Patch0:		taper-7.0pre1-sparc.patch
 Patch1:		taper-7.0pre1-remove-conflicting-type.patch
 Patch2:		taper-7.0pre-1-umode_t.patch
+Patch3:		taper-7.0pre1-LDFLAGS.diff
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -33,11 +34,12 @@ restoration program.
 %endif
 %patch1 -p1 -b .type_conflict
 %patch2 -p1 -b .umode_t
+%patch3 -p0 -b .LDFLAGS
 
 find . -name CVS -type d | xargs rm -rf
 
 %build
-%make CFLAGS="%{optflags} -O3 -fno-strength-reduce -Wall"
+%make CFLAGS="%{optflags} -O3 -fno-strength-reduce -Wall" LDFLAGS="%{ldflags}"
 
 %install
 rm -rf %{buildroot}
