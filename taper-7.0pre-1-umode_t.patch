@@ -1,0 +1,13 @@
+diff -p -up taper-7.0pre-1/config.h.umode_t taper-7.0pre-1/config.h
+--- taper-7.0pre-1/config.h.umode_t	2002-05-18 20:34:27.000000000 +0200
++++ taper-7.0pre-1/config.h	2008-03-08 22:02:11.000000000 +0100
+@@ -7,7 +7,8 @@
+ #ifndef __CONFIG_H__
+ 
+ #ifdef GLIBC_2
+-#define umode_t mode_t
++//#define umode_t mode_t
++#include <asm/types.h>
+ #endif
+ 
+ #define NULL ((void *)0)

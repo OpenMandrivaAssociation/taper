@@ -1,0 +1,54 @@
+--- Makefile	2002-05-18 20:34:27.000000000 +0200
++++ Makefile.oden	2008-12-23 13:21:21.000000000 +0100
+@@ -11,7 +11,7 @@
+ include version
+ include Makefile.common
+ 
+-
++LDFLAGS = 
+ 
+ 
+ all: bins docs 
+@@ -24,17 +24,17 @@
+ 	echo "#define CUR_VERSION \""$(LATEST_VERSION)"\"" > version.h
+ 
+ taper: version.h .depend $(TAPER_OBJS) $(COMMON_LIB) check_sd
+-	$(CC) $(CFLAGS) $(DEFINES) $(INCLUDE) -o taper $(TAPER_OBJS) \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFINES) $(INCLUDE) -o taper $(TAPER_OBJS) \
+ 		$(COMMON_LIB) $(COMPRESS_DIR)/$(COMPRESS_LIB) $(LIBPATH) \
+ 		$(LINKLIB) -l$(FORM) -l$(CURSES)  $(EXTRA_LIBS)
+ 
+ bg_backup: version.h .depend $(BG_BACKUP_OBJS) $(COMMON_LIB) check_sd
+-	$(CC) $(CFLAGS) $(DEFINES) $(INCLUDE) -o bg_backup \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFINES) $(INCLUDE) -o bg_backup \
+ 	        $(BG_BACKUP_OBJS) $(COMPRESS_DIR)/$(COMPRESS_LIB) \
+ 		$(COMMON_LIB) $(LIBPATH) $(LINKLIB) -l$(FORM) -l$(CURSES)  $(EXTRA_LIBS)
+ 
+ bg_restore: version.h .depend $(BG_RESTORE_OBJS) $(COMMON_LIB) check_sd
+-	$(CC) $(CFLAGS) $(DEFINES) $(INCLUDE) -o bg_restore \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFINES) $(INCLUDE) -o bg_restore \
+ 	        $(BG_RESTORE_OBJS) $(COMPRESS_DIR)/$(COMPRESS_LIB) \
+ 		$(COMMON_LIB) $(LIBPATH) $(LINKLIB) -l$(FORM) -l$(CURSES) $(EXTRA_LIBS)
+ 
+@@ -43,18 +43,18 @@
+ 	rm bg_backup bg_restore
+ 	make bg_backup-static
+ 	make bg_restore-static
+-	$(CC) $(CFLAGS) $(DEFINES) $(INCLUDE) -o taper $(TAPER_OBJS) \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFINES) $(INCLUDE) -o taper $(TAPER_OBJS) \
+ 		$(COMMON_LIB) $(COMPRESS_DIR)/$(COMPRESS_LIB) $(LIBPATH) \
+ 		$(LINKLIB) -l$(FORM) -l$(CURSES)  $(EXTRA_LIBS) -static
+ 
+ bg_backup-static: version.h .depend $(BG_BACKUP_OBJS) $(COMMON_LIB) check_sd
+-	$(CC) $(CFLAGS) $(DEFINES) $(INCLUDE) -o bg_backup \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFINES) $(INCLUDE) -o bg_backup \
+ 	        $(BG_BACKUP_OBJS) $(COMPRESS_DIR)/$(COMPRESS_LIB) \
+ 		$(COMMON_LIB) $(LIBPATH) $(LINKLIB) -l$(FORM) -l$(CURSES)  $(EXTRA_LIBS) \
+ 		-static
+ 
+ bg_restore-static: version.h .depend $(BG_RESTORE_OBJS) $(COMMON_LIB) check_sd
+-	$(CC) $(CFLAGS) $(DEFINES) $(INCLUDE) -o bg_restore \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(DEFINES) $(INCLUDE) -o bg_restore \
+ 	        $(BG_RESTORE_OBJS) $(COMPRESS_DIR)/$(COMPRESS_LIB) \
+ 		$(COMMON_LIB) $(LIBPATH) $(LINKLIB) -l$(FORM) -l$(CURSES)  $(EXTRA_LIBS) \
+ 		-static

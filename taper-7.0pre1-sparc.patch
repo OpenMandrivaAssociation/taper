@@ -1,0 +1,11 @@
+--- taper-7.0pre-1/Makefile.common.sparc	2002-05-18 21:30:37.000000000 +0200
++++ taper-7.0pre-1/Makefile.common	2004-12-13 06:51:48.646569971 +0100
+@@ -23,7 +23,7 @@ GLIBC=TRUE
+ DEFINES0 = -DLINUX -D_GNU_SOURCE -Dlint	# gcc acts like a lint with -Wall
+ DEFINES1 = -DTRIPLE_BUFFER              # see above 
+ DEFINES2 = -D__USE_FILE_OFFSET64
+-#DEFINES2 = -DTAPER_BIG_ENDIAN          # uncomment if using big endian machine
++DEFINES2 = -DTAPER_BIG_ENDIAN          # uncomment if using big endian machine
+ #DEFINES3 = -DFIFO_PROBLEMS	        # uncomment if using libc5 and getting FIFO errors
+ 
+ ifeq ($(DEVELOPMENT), TRUE)
