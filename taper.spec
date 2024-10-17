@@ -6,7 +6,7 @@ License:	GPL
 Group:		Archiving/Backup
 BuildRequires:	ncurses-devel
 Source0:	http://switch.dl.sourceforge.net/sourceforge/taper/%{name}-%{version}pre1.tar.bz2
-URL:		http://taper.sourceforge.net/
+URL:		https://taper.sourceforge.net/
 Patch0:		taper-7.0pre1-sparc.patch
 Patch1:		taper-7.0pre1-remove-conflicting-type.patch
 Patch2:		taper-7.0pre-1-umode_t.patch
