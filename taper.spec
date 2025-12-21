@@ -4,6 +4,7 @@ Version:	7.0
 Release:	%mkrel 0.pre1.13
 License:	GPL
 Group:		Archiving/Backup
+BuildRequires:	make
 BuildRequires:	ncurses-devel
 Source0:	http://switch.dl.sourceforge.net/sourceforge/taper/%{name}-%{version}pre1.tar.bz2
 URL:		https://taper.sourceforge.net/
